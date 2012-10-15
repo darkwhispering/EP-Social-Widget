@@ -1,0 +1,29 @@
+.ep_social_widget a {
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: auto;
+	display: block;
+	float: left;
+	margin: 0 3px 3px 0;
+	line-height: 1;
+}
+
+.ep_social_widget:after {
+	content: ".";
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	width: 0;
+	display: block;
+}
+
+ul.ep_social_widget {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 15px 0;
+}
+
+ul.ep_social_widget li {
+	float: left;
+}
