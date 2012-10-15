@@ -4,7 +4,7 @@ Plugin Name: EP Social Widget
 Plugin URI: http://www.earthpeople.se
 Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube, LinkedIn, DeviantArt, Meetup, MySpace, Soundcloud, Bandcamp and RSS feed
 Author: Mattias Hedman
-Version: 1.1.2
+Version: 1.1.3
 Author URI: http://www.earthpeople.se
 */
 
@@ -61,11 +61,13 @@ function epsw_shortcode($args){
 					$icons = scandir($icondir);
 				}
 
-				foreach ($icons as $icon) {
-					$ext = pathinfo($icon, PATHINFO_EXTENSION);
-					$name = str_replace('icon-','',str_replace('.'.$ext,'',$icon));
-					if ($name == $network) {
-						$html .= '<a href="'.$link.'" target="_blank"><img src="'.$iconurl.'icon-'.$network.'.'.$ext.'" alt="" /></a>';
+				if($icons) {
+					foreach ($icons as $icon) {
+						$ext = pathinfo($icon, PATHINFO_EXTENSION);
+						$name = str_replace('icon-','',str_replace('.'.$ext,'',$icon));
+						if ($name == $network) {
+							$html .= '<a href="'.$link.'" target="_blank"><img src="'.$iconurl.'icon-'.$network.'.'.$ext.'" alt="" /></a>';
+						}
 					}
 				}
 			}
