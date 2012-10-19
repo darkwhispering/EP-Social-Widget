@@ -4,16 +4,17 @@ Plugin Name: EP Social Widget
 Plugin URI: http://www.earthpeople.se
 Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube, LinkedIn, DeviantArt, Meetup, MySpace, Soundcloud, Bandcamp and RSS feed
 Author: Mattias Hedman
-Version: 1.1.3
+Version: 1.1.4
 Author URI: http://www.earthpeople.se
 */
+define('EPS_VERSION','1.1.4');
 
 add_action('init','epSocialWidgetVersion',1);
 function epSocialWidgetVersion()
 {
-	if (get_option('ep-social-widget-version') != '1.1.0') {
+	if (get_option('ep-social-widget-version') != EPS_VERSION) {
 		update_option('ep-social-widget-old-version', get_option('ep-social-widget-version'));
-		update_option('ep-social-widget-version','1.1.0');
+		update_option('ep-social-widget-version',EPS_VERSION);
 	}
 }
 
@@ -173,10 +174,16 @@ class epSocialWidget extends WP_Widget{
 							echo '<a href="'.get_bloginfo("rss2_url").'" target="_blank"><img src="'.plugins_url("icons/icon-rss.gif", __FILE__).'" alt="" /></a>';
 						}
 					} else {
-						if (!isset($data['icon'])) {
-							echo '<a href="'.$data['link'].'" target="_blank"><img src="'.plugins_url("icons/icon-".$network.".gif", __FILE__).'" alt="" /></a>';
-						} else {
-							echo '<a href="'.$data['link'].'" target="_blank"><img src="'.$this->iconurl.$data['icon'].'" alt="" /></a>';
+						if (!empty($data['link'])) {
+							if (!isset($data['icon'])) {
+								echo '<a href="'.$data['link'].'" target="_blank"><img src="'.plugins_url("icons/icon-".$network.".gif", __FILE__).'" alt="" /></a>';
+							} else {
+								if (!file_exists($this->icondir.$data['icon'])) {
+									unset($instance[$network]);
+								} else {
+									echo '<a href="'.$data['link'].'" target="_blank"><img src="'.$this->iconurl.$data['icon'].'" alt="" /></a>';
+								}
+							}
 						}
 					}
 				}
@@ -220,22 +227,27 @@ class epSocialWidget extends WP_Widget{
 		unset($new_instance['rss']);
 
 		foreach($new_instance as $key => $new) {
-			if($new) {
-				if(file_exists($this->icondir.'icon-'.$key.'.png')) {
-					$instance[$key]['icon'] = 'icon-'.$key.'.png';
-				} elseif (file_exists($this->icondir.'icon-'.$key.'.jpg')) {
-					$instance[$key]['icon'] = 'icon-'.$key.'.jpg';
-				} elseif (file_exists($this->icondir.'icon-'.$key.'.gif')) {
-					$instance[$key]['icon'] = 'icon-'.$key.'.gif';
-				}
-
+			// if($new) {
 				$link = strip_tags($new);
-				if(preg_match($pattern1,$link) || preg_match($pattern2,$link)) {
-					$instance[$key]['link'] = $link;
+				if (!empty($link)) {
+					if(preg_match($pattern1,$link) || preg_match($pattern2,$link)) {
+						$instance[$key]['link'] = $link;
+					} else {
+						$instance[$key]['link'] = 'http://'.$link;
+					} 
+
+					if(file_exists($this->icondir.'icon-'.$key.'.png')) {
+						$instance[$key]['icon'] = 'icon-'.$key.'.png';
+					} elseif (file_exists($this->icondir.'icon-'.$key.'.jpg')) {
+						$instance[$key]['icon'] = 'icon-'.$key.'.jpg';
+					} elseif (file_exists($this->icondir.'icon-'.$key.'.gif')) {
+						$instance[$key]['icon'] = 'icon-'.$key.'.gif';
+					}
+
 				} else {
-					$instance[$key]['link'] = 'http://'.$link;
+					$instance[$key]['link'] = NULL;
 				}
-			}
+			// }
 		}
 
 		$v_upgrade = get_option('ep-social-widget-1.0.2to1.1.0');
