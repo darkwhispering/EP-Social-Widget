@@ -4,10 +4,10 @@ Plugin Name: EP Social Widget
 Plugin URI: http://www.earthpeople.se
 Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube, LinkedIn, DeviantArt, Meetup, MySpace, Soundcloud, Bandcamp and RSS feed
 Author: Mattias Hedman
-Version: 1.1.4
+Version: 1.2.0
 Author URI: http://www.earthpeople.se
 */
-define('EPS_VERSION','1.1.4');
+define('EPS_VERSION','1.1.5');
 
 add_action('init','epSocialWidgetVersion',1);
 function epSocialWidgetVersion()
@@ -326,42 +326,56 @@ class epSocialWidget extends WP_Widget{
 		</p>
 
 		<?php if($networks) : ?>
-			<h4>User added networks</h4>
-			<?php
-			foreach($networks as $network) :
-			?>
-				<p>
-					<label for="<?php echo $this->get_field_id($network); ?>"><?php echo __(str_replace('_',' ',$network).' profile link:'); ?></label>
-					<br />
-					<input type="text" id="<?php echo $this->get_field_id($network); ?>" name="<?php echo $this->get_field_name($network); ?>" value="<?php echo $instance[$network]['link']; ?>" class="widefat" />
-				</p>
-			<?php
-			unset($instance[$network]);
-			endforeach;
+		<div class="ep-social-user-networks">
+			<a href="#" class="show-hide">Show/Hide user added networks</a>
+			<div class="ep-social-content">
+				<h4>User added networks</h4>
+				<?php
+				foreach($networks as $network) :
+				?>
+					<p>
+						<label for="<?php echo $this->get_field_id($network); ?>"><?php echo __(str_replace('_',' ',$network).' profile link:'); ?></label>
+						<br />
+						<input type="text" id="<?php echo $this->get_field_id($network); ?>" name="<?php echo $this->get_field_name($network); ?>" value="<?php echo $instance[$network]['link']; ?>" class="widefat" />
+					</p>
+				<?php
+				unset($instance[$network]);
+				endforeach;
+				?>
+			</div>
+		</div>
+		<?php
 		endif;
 
 		unset($instance['title']);
 		unset($instance['rss']);
 		unset($instance['0']);
 		?>
+		
+		
+		<div class="ep-social-default-networks">
+			<a href="#" class="show-hide">Show/Hide default networks</a>
+			<div class="ep-social-content">
+				<h4>Default networks</h4>
 
-		<h4>Default networks</h4>
+				<?php
+				foreach($instance as $network => $link) :
 
-		<?php
-		foreach($instance as $network => $link) :
-
-			if(file_exists($this->plugin_path."/icons/icon-".$network.".gif")) :
-			?>
-			<p>
-				<label for="<?php echo $this->get_field_id($network); ?>"><?php echo __($network.' profile link:'); ?></label>
-				<br />
-				<input type="text" id="<?php echo $this->get_field_id($network); ?>" name="<?php echo $this->get_field_name($network); ?>" value="<?php echo $link['link']; ?>" class="widefat" />
-			</p>
-			<?php
-			endif;
-		endforeach;
+					if(file_exists($this->plugin_path."/icons/icon-".$network.".gif")) :
+					?>
+					<p>
+						<label for="<?php echo $this->get_field_id($network); ?>"><?php echo __($network.' profile link:'); ?></label>
+						<br />
+						<input type="text" id="<?php echo $this->get_field_id($network); ?>" name="<?php echo $this->get_field_name($network); ?>" value="<?php echo $link['link']; ?>" class="widefat" />
+					</p>
+					<?php
+					endif;
+				endforeach;
+				?>
+			</div>
+		</div>
+	<?php
 	}
-
 	private function get_icons() {
 		if(!file_exists($this->icondir)) {
 			$icons = NULL;
@@ -372,6 +386,34 @@ class epSocialWidget extends WP_Widget{
 		return $icons;
 	}
 }
+
+function eps_widget_settings() {
+?>
+<style>
+	.ep-social-user-networks,
+	.ep-social-default-networks {
+		padding: 5px 0;
+	}
+
+	.ep-social-user-networks .ep-social-content,
+	.ep-social-default-networks .ep-social-content {
+		display: none;
+	}
+</style>
+<script>
+	jQuery(document).ready(function($) {
+		$('.ep-social-default-networks .show-hide').on('click',function(){
+			$('.ep-social-default-networks .ep-social-content').toggle('slide');
+		});
+
+		$('.ep-social-user-networks .show-hide').on('click',function(){
+			$('.ep-social-user-networks .ep-social-content').toggle('slide');
+		});
+	});
+</script>
+<?php
+}
+add_action("admin_head", "eps_widget_settings");
 
 // ========================
 // = Plugin settings page =

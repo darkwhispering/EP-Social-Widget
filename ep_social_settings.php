@@ -214,9 +214,9 @@ function epsocial_menu() {
 }
 add_action('admin_menu','epsocial_menu');
 
-function epsocial_admin_css() {
-	wp_register_style('epsocial_css', plugins_url('css/admin.css', __FILE__));
-	wp_enqueue_style('epsocial_css');
-}
-add_action('admin_init','epsocial_admin_css');
+// function epsocial_admin_css() {
+// 	wp_register_style('epsocial_css', plugins_url('css/admin.css', __FILE__));
+// 	wp_enqueue_style('epsocial_css');
+// }
+// add_action('admin_init','epsocial_admin_css');
 ?>
