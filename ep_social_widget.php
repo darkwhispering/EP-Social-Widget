@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: EP Social Widget
-Plugin URI: http://www.earthpeople.se
+Plugin URI: http://www.darkwhispering.com
 Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube, LinkedIn, DeviantArt, Meetup, MySpace, Soundcloud, Bandcamp and RSS feed
 Author: Mattias Hedman
-Version: 1.2.0
-Author URI: http://www.earthpeople.se
+Author URI: http://www.darkwhispering.com
+Version: 1.1.5
 */
 define('EPS_VERSION','1.1.5');
 
@@ -402,12 +402,14 @@ function eps_widget_settings() {
 </style>
 <script>
 	jQuery(document).ready(function($) {
-		$('.ep-social-default-networks .show-hide').on('click',function(){
-			$('.ep-social-default-networks .ep-social-content').toggle('slide');
+		$('.widgets-holder-wrap').on('click', '.ep-social-default-networks .show-hide', function(){
+			console.log('default');
+			$('.widgets-holder-wrap .ep-social-default-networks .ep-social-content').toggle('slide');
 		});
 
-		$('.ep-social-user-networks .show-hide').on('click',function(){
-			$('.ep-social-user-networks .ep-social-content').toggle('slide');
+		$('.widgets-holder-wrap').on('click', '.ep-social-user-networks .show-hide', function(){
+			console.log('user');
+			$('.widgets-holder-wrap .ep-social-user-networks .ep-social-content').toggle('slide');
 		});
 	});
 </script>
