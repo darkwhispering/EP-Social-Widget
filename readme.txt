@@ -1,9 +1,9 @@
 === EP Social Widget ===
 Contributors: Earth People, darkwhispering
-Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, myspace, deviantart, meetup, soundcloud, bandcamp
+Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, myspace, deviantart, meetup, soundcloud, bandcamp, pinterest, vimeo
 Requires at least: 3.3.0
 Tested up to: 3.5.0
-Stable tag: 1.1.5
+Stable tag: 1.2.0
 
 Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube and more.
 
@@ -24,6 +24,8 @@ Available default networks are
 * MySpace
 * Soundcloud
 * Bandcamp
+* Pinterest
+* Vimeo
 
 You can also choose to display a icon for your RSS 2.0 feed. Icons are in black and white colors only.
 
@@ -46,6 +48,8 @@ Available networks are
 * myspace
 * soundcloud
 * bandcamp
+* pinterest
+* vimeo
 
 Just use the one you want to display in your post/page and give it a link. The RSS option only need a 1 as value if you want that displayed. Remove any network completely to remove it from the post/page.
 
@@ -63,6 +67,10 @@ To display a network you have added yourself, just use the network name displaye
 3. Option page
 
 == Changelog ==
+
+= 1.2.0 =
+* Added Pinterest as default network.
+* Added Vimeo as default network.
 
 = 1.1.5 =
 * Fixed issue with toggling input fields in widget settings directly after adding the widget to a widget area
