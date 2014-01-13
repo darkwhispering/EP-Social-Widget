@@ -15,8 +15,7 @@ class epSocialSettings {
 		}
 	?>
 		<div class="wrap ep-social">
-			<div class="icon32" id="icon-options-general"><br></div>
-			<h2>EP Social Widget settings</h2>
+			<h2><?php echo __('EP Social Widget settings'); ?></h2>
 			
 			<?php if(!empty($_POST)) : ?>
 				<?php
@@ -39,22 +38,42 @@ class epSocialSettings {
 
 			?>
 			
-			<h2>Add new network</h2>
+			<h3>Add new network</h3>
 			<p>
-				The default icon is 25x25 pixels. The upload does NOT resize your images so if you want your icons in the same size you have to resize them yourself in an application like photoshop. If you wish to have larger icons for you own added networks that is possible and your are welcome to use it.
+				The default icon is 25x25 pixels. The upload does <strong>NOT</strong> resize your images so if you want your icons in the same size you have to resize them yourself in an application like photoshop. If you wish to have larger icons for you own added networks that is possible and your are welcome to use it.
 			</p>
 			<form method="post" enctype="multipart/form-data">
-				<div class="form-row">
-					Network name: <input type="text" name="network_name" />
-					Icon: <input type="file" name="icon" />
-					<input type="submit" name="submit" value="Save" />
-				</div>
+				<table class="form-table abc-settings">
+                    <tbody>
+                        <tr valign="top">
+                            <th scope="row">
+                            	<label for="abc_title"><?php echo __('Network name'); ?>:</label>
+                            </th>
+                            <td>
+								<input type="text" name="network_name" />                
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row">
+                            	<label for="abc_message"><?php echo __('Icon'); ?>:</label>
+                            </th>
+                            <td>
+								<input type="file" name="icon" />
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row">
+                            	<input type="submit" name="submit" value="Save" class="button-primary save" />
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
 			</form>
 
-			<h2>Your added networks</h2>
+			<h3>Your added networks</h3>
 			<p>Icon is show with a max height of 70px, so don't be alarmed if your icon it not in ful size in the list, it will be on the site</p>
 			<div id="ep-social-networks">
-				<table class="widefat">
+				<table class="wp-list-table widefat">
 					<thead>
 						<th width="20%">Network name</th>
 						<th width="80%">Icon</th>
@@ -73,7 +92,7 @@ class epSocialSettings {
 											<span class="delete">
 												<form method="post">
 													<input type="hidden" name="icon" value="<?php echo $network['icon']; ?>">
-													<input type="submit" value="delete" name="delete">
+													<input type="submit" value="delete" name="delete" class="button-secondary">
 												</form>
 											</span>
 										</div>
@@ -213,10 +232,3 @@ function epsocial_menu() {
 	add_submenu_page('options-general.php', 'EP Social Widget Settings', 'EP Social Widget', 'manage_options', 'ep-social-widget', 'epsocial_settings');
 }
 add_action('admin_menu','epsocial_menu');
-
-// function epsocial_admin_css() {
-// 	wp_register_style('epsocial_css', plugins_url('css/admin.css', __FILE__));
-// 	wp_enqueue_style('epsocial_css');
-// }
-// add_action('admin_init','epsocial_admin_css');
-?>

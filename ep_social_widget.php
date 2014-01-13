@@ -2,12 +2,12 @@
 /*
 Plugin Name: EP Social Widget
 Plugin URI: http://www.darkwhispering.com
-Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube, LinkedIn, DeviantArt, Meetup, MySpace, Soundcloud, Bandcamp, Pinterest, Vimeo and RSS feed
+Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube, LinkedIn, DeviantArt, Meetup, MySpace, Soundcloud, Bandcamp, Pinterest, Vimeo, Tumblr and RSS feed
 Author: Mattias Hedman
 Author URI: http://www.darkwhispering.com
-Version: 1.2.0
+Version: 1.4.0
 */
-define('EPS_VERSION','1.2.0');
+define('EPS_VERSION','1.4.0');
 
 add_action('init','epSocialWidgetVersion',1);
 function epSocialWidgetVersion()
@@ -293,7 +293,8 @@ class epSocialWidget extends WP_Widget{
 			'bandcamp' 		=> array('link' => ''),
 			'soundcloud' 	=> array('link' => ''),
 			'pinterest'		=> array('link' => ''),
-			'vimeo'			=> array('link' => '')
+			'vimeo'			=> array('link' => ''),
+			'tumblr'		=> array('link' => '')
 		);
 		$instance = wp_parse_args((array)$instance,$default);
 
@@ -404,11 +405,11 @@ function eps_widget_settings() {
 </style>
 <script>
 	jQuery(document).ready(function($) {
-		$('.widgets-holder-wrap').on('click', '.ep-social-default-networks .show-hide', function(){
+		$('body .widgets-holder-wrap').on('click', '.ep-social-default-networks .show-hide', function(){
 			$('.widgets-holder-wrap .ep-social-default-networks .ep-social-content').toggle('slide');
 		});
 
-		$('.widgets-holder-wrap').on('click', '.ep-social-user-networks .show-hide', function(){
+		$('body .widgets-holder-wrap').on('click', '.ep-social-user-networks .show-hide', function(){
 			$('.widgets-holder-wrap .ep-social-user-networks .ep-social-content').toggle('slide');
 		});
 	});
