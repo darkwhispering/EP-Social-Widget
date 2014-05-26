@@ -1,8 +1,8 @@
 === EP Social Widget ===
 Contributors: Earth People, darkwhispering
 Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, myspace, deviantart, meetup, soundcloud, bandcamp, pinterest, vimeo
-Requires at least: 3.3.0
-Tested up to: 3.8.0
+Requires at least: 3.0.0
+Tested up to: 3.9.1
 Stable tag: 1.4.0
 
 Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube and more.
