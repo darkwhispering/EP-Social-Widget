@@ -5,9 +5,9 @@ Plugin URI: http://www.darkwhispering.com
 Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube, LinkedIn, DeviantArt, Meetup, MySpace, Soundcloud, Bandcamp, Pinterest, Vimeo, Tumblr and RSS feed
 Author: Mattias Hedman
 Author URI: http://www.darkwhispering.com
-Version: 1.4.0
+Version: 1.4.1
 */
-define('EPS_VERSION','1.4.0');
+define('EPS_VERSION','1.4.1');
 
 add_action('init','epSocialWidgetVersion',1);
 function epSocialWidgetVersion()

@@ -2,8 +2,8 @@
 Contributors: Earth People, darkwhispering
 Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, myspace, deviantart, meetup, soundcloud, bandcamp, pinterest, vimeo
 Requires at least: 3.0.0
-Tested up to: 3.9.1
-Stable tag: 1.4.0
+Tested up to: 4.1.0
+Stable tag: 1.4.1
 
 Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube and more.
 
@@ -69,6 +69,11 @@ To display a network you have added yourself, just use the network name displaye
 3. Option page
 
 == Changelog ==
+
+= 1.4.1 =
+* Added title attribute to the link tags for better SEO.
+* Added alt attribute to the icon images for better SEO.
+* Tested on WordPress 4.1
 
 = 1.4.0 =
 * Updated settings page layout and design to match the new admin design in WP 3.8
