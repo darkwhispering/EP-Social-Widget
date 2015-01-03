@@ -36,14 +36,14 @@ function epsw_shortcode($args){
 		if($network === 'rss') {
 			if($link === '1') {
 				$html .= '<li>';
-					$html .= '<a href="'.get_bloginfo("rss2_url").'" target="_blank"><img src="'.plugins_url("icons/icon-rss.gif", __FILE__).'" alt="" /></a>';
+					$html .= '<a href="'.get_bloginfo("rss2_url").'" target="_blank" title="RSS"><img src="'.plugins_url("icons/icon-rss.gif", __FILE__).'" alt="RSS" /></a>';
 				$html .= '</li>';
 			}
 		} else {
 			$pattern1 = '/^http:\/\//';
 			$pattern2 = '/^https:\/\//';
-			
-			$l = strip_tags($link);		
+
+			$l = strip_tags($link);
 			if(preg_match($pattern1, $l) || preg_match($pattern2, $l)){
 				$link = $l;
 			} else {
@@ -53,9 +53,9 @@ function epsw_shortcode($args){
 			$html .= '<li>';
 
 			if(file_exists($plugin_path."/icons/icon-".$network.".gif")) {
-				$html .= '<a href="'.$link.'" target="_blank"><img src="'.plugins_url("icons/icon-".$network.".gif", __FILE__).'" alt="" /></a>';
-			} else { 
-					
+				$html .= '<a href="'.$link.'" target="_blank" title="'.$network.'"><img src="'.plugins_url("icons/icon-".$network.".gif", __FILE__).'" alt="'.$network.'" /></a>';
+			} else {
+
 				if(!file_exists($icondir)) {
 					$icons = NULL;
 				} else {
@@ -67,7 +67,7 @@ function epsw_shortcode($args){
 						$ext = pathinfo($icon, PATHINFO_EXTENSION);
 						$name = str_replace('icon-','',str_replace('.'.$ext,'',$icon));
 						if ($name == $network) {
-							$html .= '<a href="'.$link.'" target="_blank"><img src="'.$iconurl.'icon-'.$network.'.'.$ext.'" alt="" /></a>';
+							$html .= '<a href="'.$link.'" target="_blank" title="'.$network.'"><img src="'.$iconurl.'icon-'.$network.'.'.$ext.'" alt="'.$network.'" /></a>';
 						}
 					}
 				}
@@ -106,10 +106,10 @@ class epSocialWidget extends WP_Widget{
 	function epSocialWidget() {
 		//Settings
 		$widget_ops = array('classname'=>'epsocialwidget','description'=>__('Display social icons on your site.','epsocialwidget'));
-		
+
 		//Controll settings
 		$control_ops = array('id_base' => 'epsocialwidget');
-		
+
 		//Create widget
 		$this->WP_Widget('epsocialwidget',__('EP Social Widget'),$widget_ops,$control_ops);
 
@@ -121,7 +121,7 @@ class epSocialWidget extends WP_Widget{
 		$this->iconurl = $wp_upload_dir['baseurl'].'/epsocial_icons/';
 		$this->icondir = $wp_upload_dir['basedir'].'/epsocial_icons/';
 	}
-	
+
 	// Widget frontend
 	function widget($args,$instance) {
 		extract($args);
@@ -134,7 +134,7 @@ class epSocialWidget extends WP_Widget{
 				$rss = $instance['rss'];
 				unset($instance['title']);
 				unset($instance['rss']);
-				$count_networks = count($instance);			
+				$count_networks = count($instance);
 				foreach ($instance as $network => $url) {
 					$link = $url;
 					$instance[$network] = '';
@@ -155,33 +155,33 @@ class epSocialWidget extends WP_Widget{
 				$i++;
 			}
 		}
-		
+
 		//User selected settings
 		$title = $instance['title'];
 		unset($instance['title']);
-		
+
 		echo $before_widget;
 		?>
-		
+
 		<div class="ep_social_widget">
-			
+
 			<?php echo $before_title . $title . $after_title; ?>
 
 			<?php
 				foreach($instance as $network => $data) {
 					if($network === 'rss') {
 						if($data === '1') {
-							echo '<a href="'.get_bloginfo("rss2_url").'" target="_blank"><img src="'.plugins_url("icons/icon-rss.gif", __FILE__).'" alt="" /></a>';
+							echo '<a href="'.get_bloginfo("rss2_url").'" target="_blank" title="RSS"><img src="'.plugins_url("icons/icon-rss.gif", __FILE__).'" alt="RSS" /></a>';
 						}
 					} else {
 						if (!empty($data['link'])) {
 							if (!isset($data['icon'])) {
-								echo '<a href="'.$data['link'].'" target="_blank"><img src="'.plugins_url("icons/icon-".$network.".gif", __FILE__).'" alt="" /></a>';
+								echo '<a href="'.$data['link'].'" target="_blank" title="'.$network.'"><img src="'.plugins_url("icons/icon-".$network.".gif", __FILE__).'" alt="'.$network.'" /></a>';
 							} else {
 								if (!file_exists($this->icondir.$data['icon'])) {
 									unset($instance[$network]);
 								} else {
-									echo '<a href="'.$data['link'].'" target="_blank"><img src="'.$this->iconurl.$data['icon'].'" alt="" /></a>';
+									echo '<a href="'.$data['link'].'" target="_blank" title="'.$network.'"><img src="'.$this->iconurl.$data['icon'].'" alt="'.$network.'" /></a>';
 								}
 							}
 						}
@@ -189,11 +189,11 @@ class epSocialWidget extends WP_Widget{
 				}
 			?>
 		</div>
-		
+
 		<?php
 		echo $after_widget;
 	}
-	
+
 	// Widget update
 	function update($new_instance,$instance) {
 		/* If we just upgraded from v1.0.2 or lower to v1.1.0 we need to update the instance array */
@@ -204,7 +204,7 @@ class epSocialWidget extends WP_Widget{
 				$rss = $instance['rss'];
 				unset($instance['title']);
 				unset($instance['rss']);
-				$count_networks = count($instance);			
+				$count_networks = count($instance);
 				foreach ($instance as $network => $url) {
 					$link = $url;
 					$instance[$network] = '';
@@ -219,7 +219,7 @@ class epSocialWidget extends WP_Widget{
 
 		$pattern1 = '/^http:\/\//'; //
 		$pattern2 = '/^https:\/\//';
-		
+
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['rss'] = strip_tags($new_instance['rss']);
 
@@ -234,7 +234,7 @@ class epSocialWidget extends WP_Widget{
 						$instance[$key]['link'] = $link;
 					} else {
 						$instance[$key]['link'] = 'http://'.$link;
-					} 
+					}
 
 					if(file_exists($this->icondir.'icon-'.$key.'.png')) {
 						$instance[$key]['icon'] = 'icon-'.$key.'.png';
@@ -252,7 +252,7 @@ class epSocialWidget extends WP_Widget{
 
 		$v_upgrade = get_option('ep-social-widget-1.0.2to1.1.0');
 		if (!$v_upgrade) update_option('ep-social-widget-1.0.2to1.1.0','true');
-		
+
 		return $instance;
 	}
 
@@ -266,7 +266,7 @@ class epSocialWidget extends WP_Widget{
 				$rss = $instance['rss'];
 				unset($instance['title']);
 				unset($instance['rss']);
-				$count_networks = count($instance);			
+				$count_networks = count($instance);
 				foreach ($instance as $network => $url) {
 					$link = $url;
 					$instance[$network] = '';
@@ -318,7 +318,7 @@ class epSocialWidget extends WP_Widget{
 			<br />
 			<input type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" class="widefat" />
 		</p>
-		
+
 		<!-- RSS -->
 		<p>
 			<label for="<?php echo $this->get_field_id('rss'); ?>"><?php echo __('Display rss link:'); ?></label>
@@ -354,8 +354,8 @@ class epSocialWidget extends WP_Widget{
 		unset($instance['rss']);
 		unset($instance['0']);
 		?>
-		
-		
+
+
 		<div class="ep-social-default-networks">
 			<a href="#" class="show-hide">Show/Hide default networks</a>
 			<div class="ep-social-content">
