@@ -2,7 +2,7 @@
 Contributors: Earth People, darkwhispering
 Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, myspace, deviantart, meetup, soundcloud, bandcamp, pinterest, vimeo
 Requires at least: 3.0.0
-Tested up to: 4.1.0
+Tested up to: 4.2.2
 Stable tag: 1.4.1
 
 Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube and more.
@@ -56,6 +56,8 @@ Available networks are
 Just use the one you want to display in your post/page and give it a link. The RSS option only need a 1 as value if you want that displayed. Remove any network completely to remove it from the post/page.
 
 To display a network you have added yourself, just use the network name displayed in the list at the option page.
+
+Plugin also available on [Github](https://github.com/darkwhispering/EP-Social-Widget).
 
 == Installation ==
 
