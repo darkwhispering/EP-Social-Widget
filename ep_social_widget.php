@@ -2,14 +2,14 @@
 /*
 Plugin Name: EP Social Widget
 Plugin URI: http://www.darkwhispering.com
-Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube, LinkedIn, DeviantArt, Meetup, MySpace, Soundcloud, Bandcamp, Pinterest, Vimeo, Tumblr and RSS feed
+Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google, Google Plus, Youtube, LinkedIn, Soundcloud, Pinterest, Vimeo, Tumblr, Instagram, Github and RSS feed.
 Author: Mattias Hedman
 Author URI: http://www.darkwhispering.com
-Version: 1.4.1
+Version: 1.5.0
 */
-define('EPS_VERSION','1.4.1');
+define('EPS_VERSION','1.5.0');
 
-add_action('init','epSocialWidgetVersion',1);
+add_action('init','epSocialWidgetVersion', 1);
 function epSocialWidgetVersion()
 {
 	if (get_option('ep-social-widget-version') != EPS_VERSION) {
@@ -36,7 +36,7 @@ function epsw_shortcode($args){
 		if($network === 'rss') {
 			if($link === '1') {
 				$html .= '<li>';
-					$html .= '<a href="'.get_bloginfo("rss2_url").'" target="_blank" title="RSS"><img src="'.plugins_url("icons/icon-rss.gif", __FILE__).'" alt="RSS" /></a>';
+					$html .= '<a href="'.get_bloginfo("rss2_url").'" target="_blank" title="RSS"><img src="'.plugins_url("icons/rss.svg", __FILE__).'" alt="RSS" width="26" height="26" /></a>';
 				$html .= '</li>';
 			}
 		} else {
@@ -52,8 +52,8 @@ function epsw_shortcode($args){
 
 			$html .= '<li>';
 
-			if(file_exists($plugin_path."/icons/icon-".$network.".gif")) {
-				$html .= '<a href="'.$link.'" target="_blank" title="'.$network.'"><img src="'.plugins_url("icons/icon-".$network.".gif", __FILE__).'" alt="'.$network.'" /></a>';
+			if(file_exists($plugin_path."/icons/".$network.".svg")) {
+				$html .= '<a href="'.$link.'" target="_blank" title="'.$network.'"><img src="'.plugins_url("icons/".$network.".svg", __FILE__).'" alt="'.$network.'" width="26" height="26" /></a>';
 			} else {
 
 				if(!file_exists($icondir)) {
@@ -67,7 +67,7 @@ function epsw_shortcode($args){
 						$ext = pathinfo($icon, PATHINFO_EXTENSION);
 						$name = str_replace('icon-','',str_replace('.'.$ext,'',$icon));
 						if ($name == $network) {
-							$html .= '<a href="'.$link.'" target="_blank" title="'.$network.'"><img src="'.$iconurl.'icon-'.$network.'.'.$ext.'" alt="'.$network.'" /></a>';
+							$html .= '<a href="'.$link.'" target="_blank" title="'.$network.'"><img src="'.$iconurl.'icon-'.$network.'.'.$ext.'" alt="'.$network.'" width="26" height="26" /></a>';
 						}
 					}
 				}
@@ -171,17 +171,17 @@ class epSocialWidget extends WP_Widget{
 				foreach($instance as $network => $data) {
 					if($network === 'rss') {
 						if($data === '1') {
-							echo '<a href="'.get_bloginfo("rss2_url").'" target="_blank" title="RSS"><img src="'.plugins_url("icons/icon-rss.gif", __FILE__).'" alt="RSS" /></a>';
+							echo '<a href="'.get_bloginfo("rss2_url").'" target="_blank" title="RSS"><img src="'.plugins_url("icons/rss.svg", __FILE__).'" alt="RSS" width="26" height="26" /></a>';
 						}
 					} else {
 						if (!empty($data['link'])) {
 							if (!isset($data['icon'])) {
-								echo '<a href="'.$data['link'].'" target="_blank" title="'.$network.'"><img src="'.plugins_url("icons/icon-".$network.".gif", __FILE__).'" alt="'.$network.'" /></a>';
+								echo '<a href="'.$data['link'].'" target="_blank" title="'.$network.'"><img src="'.plugins_url("icons/".$network.".svg", __FILE__).'" alt="'.$network.'" width="26" height="26" /></a>';
 							} else {
 								if (!file_exists($this->icondir.$data['icon'])) {
 									unset($instance[$network]);
 								} else {
-									echo '<a href="'.$data['link'].'" target="_blank" title="'.$network.'"><img src="'.$this->iconurl.$data['icon'].'" alt="'.$network.'" /></a>';
+									echo '<a href="'.$data['link'].'" target="_blank" title="'.$network.'"><img src="'.$this->iconurl.$data['icon'].'" alt="'.$network.'" width="26" height="26" /></a>';
 								}
 							}
 						}
@@ -287,14 +287,13 @@ class epSocialWidget extends WP_Widget{
 			'gplus' 		=> array('link' => ''),
 			'youtube' 		=> array('link' => ''),
 			'linkedin' 		=> array('link' => ''),
-			'deviantart' 	=> array('link' => ''),
-			'meetup' 		=> array('link' => ''),
-			'myspace' 		=> array('link' => ''),
-			'bandcamp' 		=> array('link' => ''),
 			'soundcloud' 	=> array('link' => ''),
 			'pinterest'		=> array('link' => ''),
 			'vimeo'			=> array('link' => ''),
-			'tumblr'		=> array('link' => '')
+			'tumblr'		=> array('link' => ''),
+			'google'		=> array('link' => ''),
+			'instagram'		=> array('link' => ''),
+			'guthub'		=> array('link' => '')
 		);
 		$instance = wp_parse_args((array)$instance,$default);
 
@@ -364,7 +363,7 @@ class epSocialWidget extends WP_Widget{
 				<?php
 				foreach($instance as $network => $link) :
 
-					if(file_exists($this->plugin_path."/icons/icon-".$network.".gif")) :
+					if(file_exists($this->plugin_path."/icons/".$network.".svg")) :
 					?>
 					<p>
 						<label for="<?php echo $this->get_field_id($network); ?>"><?php echo __($network.' profile link:'); ?></label>

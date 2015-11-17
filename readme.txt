@@ -72,6 +72,15 @@ Plugin also available on [Github](https://github.com/darkwhispering/EP-Social-Wi
 
 == Changelog ==
 
+= 1.5.0 =
+* Added Github.
+* Added Instagram.
+* Added Google. *As general for anything Google, Gplus icon still exists separately.*
+* Removed Bandcamp.
+* Removed Deviantart.
+* Removed Meetup.
+* Removed MySpace.
+
 = 1.4.1 =
 * Added title attribute to the link tags for better SEO.
 * Added alt attribute to the icon images for better SEO.
