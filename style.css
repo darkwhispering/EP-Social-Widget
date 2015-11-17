@@ -5,8 +5,16 @@
 	height: auto;
 	display: block;
 	float: left;
-	margin: 0 3px 3px 0;
+	margin: 0 25px 25px 0;
 	line-height: 1;
+}
+
+.ep_social_widget a img {
+	transition: opacity .5s;
+}
+
+.ep_social_widget a:hover img {
+	opacity: .7;
 }
 
 .ep_social_widget:after {
