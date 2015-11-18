@@ -46,7 +46,7 @@ class epSocialSettings {
 
 			<h3><?php _e( 'Add new network' ); ?></h3>
 			<p>
-				<?php _e( 'The default icon is 25x25 pixels. The upload does <strong>NOT</strong> resize your images so if you want your icons in the same size you have to resize them yourself in an application like photoshop. If you wish to have larger icons for you own added networks that is possible and your are welcome to use it.' ); ?>
+				<?php _e( 'The default icon is 26x26 pixels. The upload does <strong>NOT</strong> resize your images, however, the plugin sets a fixed size of 26x26 when rendering the widget.' ); ?>
 			</p>
 			<form method="post" enctype="multipart/form-data">
 				<table class="form-table abc-settings">
@@ -65,6 +65,7 @@ class epSocialSettings {
                             </th>
                             <td>
 								<input type="file" name="icon" />
+								<p class="description"><?php _e( 'Only .png, .jpg and .gif is support.' ); ?></p>
                             </td>
                         </tr>
                         <tr valign="top">
@@ -77,7 +78,6 @@ class epSocialSettings {
 			</form>
 
 			<h3><?php _e( 'Your added networks' ); ?></h3>
-			<p><?php _e( 'Icon is show with a max height of 70px, so don\'t be alarmed if your icon it not in ful size in the list, it will be on the site' ); ?></p>
 			<div id="ep-social-networks">
 				<table class="wp-list-table widefat">
 					<thead>
@@ -92,7 +92,7 @@ class epSocialSettings {
 							?>
 								<tr>
 									<td><?php echo $network['name']; ?></td>
-									<td><img src="<?php echo $this->iconurl; ?><?php echo $network['icon']; ?>" alt="<?php echo $network['name']; ?>" style="max-height:70px"></td>
+									<td><img src="<?php echo $this->iconurl; ?><?php echo $network['icon']; ?>" alt="<?php echo $network['name']; ?>" width="26" height="26"></td>
 									<td>
 										<div class="row-actions">
 											<span class="delete">
