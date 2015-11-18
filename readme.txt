@@ -1,5 +1,5 @@
 === EP Social Widget ===
-Contributors: Earth People, darkwhispering
+Contributors: darkwhispering
 Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, soundcloud, pinterest, vimeo, instagram, github
 Requires at least: 3.0.0
 Tested up to: 4.4.0
