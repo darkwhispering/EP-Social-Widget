@@ -1,6 +1,6 @@
 === EP Social Widget ===
 Contributors: Earth People, darkwhispering
-Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, myspace, deviantart, meetup, soundcloud, bandcamp, pinterest, vimeo
+Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, soundcloud, pinterest, vimeo, instagram, github
 Requires at least: 3.0.0
 Tested up to: 4.2.2
 Stable tag: 1.4.1
@@ -19,14 +19,13 @@ Available default networks are
 * Google Plus
 * Youtube
 * LinkedIn
-* DeviantArt
-* Meetup
-* MySpace
 * Soundcloud
-* Bandcamp
 * Pinterest
 * Vimeo
 * Tumblr
+* Google
+* Instagram
+* Github
 
 You can also choose to display a icon for your RSS 2.0 feed. Icons are in black and white colors only.
 
@@ -44,14 +43,13 @@ Available networks are
 * youtube
 * rss
 * linkedin
-* deviantart
-* meetup
-* myspace
 * soundcloud
-* bandcamp
 * pinterest
 * vimeo
 * tumblr
+* google
+* instagram
+* github
 
 Just use the one you want to display in your post/page and give it a link. The RSS option only need a 1 as value if you want that displayed. Remove any network completely to remove it from the post/page.
 
@@ -73,6 +71,9 @@ Plugin also available on [Github](https://github.com/darkwhispering/EP-Social-Wi
 == Changelog ==
 
 = 1.5.0 =
+* Replaced old GIF icons with new SVG icons to get consistent quality between platforms and devices.
+* Added more spacing between icons.
+* Added slight fade out effect on hover.
 * Added Github.
 * Added Instagram.
 * Added Google. *As general for anything Google, Gplus icon still exists separately.*
@@ -80,6 +81,7 @@ Plugin also available on [Github](https://github.com/darkwhispering/EP-Social-Wi
 * Removed Deviantart.
 * Removed Meetup.
 * Removed MySpace.
+* Tested on Wordpress 4.4
 
 = 1.4.1 =
 * Added title attribute to the link tags for better SEO.

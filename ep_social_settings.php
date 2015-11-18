@@ -16,7 +16,7 @@ class epSocialSettings {
 	?>
 		<div class="wrap ep-social">
 			<h2><?php echo __('EP Social Widget settings'); ?></h2>
-			
+
 			<?php if(!empty($_POST)) : ?>
 				<?php
 					if(!empty($_POST['submit'])) {
@@ -33,11 +33,11 @@ class epSocialSettings {
 					</ul>
 				</div>
 			<?php endif; ?>
-			
+
 			<?php
 
 			?>
-			
+
 			<h3>Add new network</h3>
 			<p>
 				The default icon is 25x25 pixels. The upload does <strong>NOT</strong> resize your images so if you want your icons in the same size you have to resize them yourself in an application like photoshop. If you wish to have larger icons for you own added networks that is possible and your are welcome to use it.
@@ -50,7 +50,7 @@ class epSocialSettings {
                             	<label for="abc_title"><?php echo __('Network name'); ?>:</label>
                             </th>
                             <td>
-								<input type="text" name="network_name" />                
+								<input type="text" name="network_name" />
                             </td>
                         </tr>
                         <tr valign="top">
@@ -77,7 +77,7 @@ class epSocialSettings {
 					<thead>
 						<th width="20%">Network name</th>
 						<th width="80%">Icon</th>
-						<th></th>					
+						<th></th>
 					</thead>
 					<?php
 						$networks = $this->get_user_networks();
@@ -158,7 +158,7 @@ class epSocialSettings {
 
 
 	}
-	
+
 	private function epsocial_save($data) {
 		// Icon
 		$icon = $_FILES['icon'];
