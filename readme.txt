@@ -2,8 +2,8 @@
 Contributors: Earth People, darkwhispering
 Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, soundcloud, pinterest, vimeo, instagram, github
 Requires at least: 3.0.0
-Tested up to: 4.2.2
-Stable tag: 1.4.1
+Tested up to: 4.4.0
+Stable tag: 1.5.0
 
 Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube and more.
 
@@ -81,6 +81,7 @@ Plugin also available on [Github](https://github.com/darkwhispering/EP-Social-Wi
 * Removed Deviantart.
 * Removed Meetup.
 * Removed MySpace.
+* Source code now follows the Wordpress coding standards more closely.
 * Tested on Wordpress 4.4
 
 = 1.4.1 =
