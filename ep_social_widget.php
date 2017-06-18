@@ -5,7 +5,7 @@ Plugin URI: http://www.darkwhispering.com
 Description: Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google, Google Plus, Youtube, LinkedIn, Soundcloud, Pinterest, Vimeo, Tumblr, Instagram, Github and RSS feed.
 Author: Mattias Hedman
 Author URI: http://www.darkwhispering.com
-Version: 1.5.0
+Version: 1.5.1
 */
 define( 'EPS_VERSION','1.5.0' );
 
@@ -136,7 +136,7 @@ class epSocialWidget extends WP_Widget {
 		$control_ops = array( 'id_base' => 'epsocialwidget' );
 
 		//Create widget
-		$this->WP_Widget( 'epsocialwidget', __( 'EP Social Widget' ), $widget_ops, $control_ops );
+		$this->__construct( 'epsocialwidget', __( 'EP Social Widget' ), $widget_ops, $control_ops );
 
 		// Plugin path
 		$this->plugin_path = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . str_replace( basename( __FILE__ ), '', plugin_basename( __FILE__ ) );

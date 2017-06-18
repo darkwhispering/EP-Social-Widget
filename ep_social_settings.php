@@ -116,7 +116,7 @@ class epSocialSettings {
 						<?php
 						endif;
 					?>
-				</tabel>
+				</table>
 			</div>
 		</div>
 	<?php

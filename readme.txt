@@ -1,9 +1,10 @@
 === EP Social Widget ===
 Contributors: darkwhispering
+Donate link: http://darkwhispering.com/buy-me-a-beer
 Tags: social, widget, plugin, facebook, twitter, flickr, rss, social share, google, google plus, youtube, linkedin, soundcloud, pinterest, vimeo, instagram, github
 Requires at least: 3.0.0
-Tested up to: 4.4.0
-Stable tag: 1.5.0
+Tested up to: 4.6.0
+Stable tag: 1.5.1
 
 Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube and more.
 
@@ -69,6 +70,11 @@ Plugin also available on [Github](https://github.com/darkwhispering/EP-Social-Wi
 3. Option page
 
 == Changelog ==
+
+= 1.5.1 =
+* Fixed deprecated warning for old method `WP_Widget()`, now using correct `__construct()`.
+* Minor HTML code fix.
+* Tested on Wordpress 4.6.0.
 
 = 1.5.0 =
 * Replaced old GIF icons with new SVG icons to get consistent quality between platforms and devices.
