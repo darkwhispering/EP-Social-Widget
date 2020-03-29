@@ -1,3 +1,5 @@
+!!!! Not maintained !!!!
+
 === EP Social Widget ===
 Contributors: darkwhispering
 Donate link: http://darkwhispering.com/buy-me-a-beer
